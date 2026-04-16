@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setName, setEmail } from "../State/state";
+import { setName, setEmail } from "../State/userSlice";
 import "./../styles/App.css";
 
 const App = () => {
@@ -12,19 +12,21 @@ const App = () => {
       <label>Name:</label>
       <input
         type="text"
+        name="name"
         value={name}
         onChange={(e) => dispatch(setName(e.target.value))}
       /><br/><br/>
       <label>Email:</label>
       <input
-        type="text"
+        type="email"
+        name="email"
         value={email}
         onChange={(e) => dispatch(setEmail(e.target.value))}
       />
       <div className="output">
         <h3>Current values in store:</h3>
-        <p>Name-{name}</p>
-        <p>Email-{email}</p>
+        <p>Name- {name}</p>
+        <p>Email- {email}</p>
       </div>
     </div>
   );
