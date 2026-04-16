@@ -1,13 +1,33 @@
-
 import React from "react";
-import './../styles/App.css';
+import { useSelector, useDispatch } from "react-redux";
+import { setName, setEmail } from "../State/state";
+import "./../styles/App.css";
 
 const App = () => {
+  const { name, email } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   return (
     <div>
-        {/* Do not remove the main div */}
+      <h1>User Information</h1>
+      <label>Name:</label>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => dispatch(setName(e.target.value))}
+      /><br/><br/>
+      <label>Email:</label>
+      <input
+        type="text"
+        value={email}
+        onChange={(e) => dispatch(setEmail(e.target.value))}
+      />
+      <div className="output">
+        <h3>Current values in store:</h3>
+        <p>Name-{name}</p>
+        <p>Email-{email}</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
